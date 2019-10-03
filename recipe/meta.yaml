@@ -1,4 +1,4 @@
-{% set version = "4.0.2" %}
+{% set version = "4.1.0" %}
 
 package:
   name: docker-py
@@ -6,13 +6,13 @@ package:
 
 source:
   url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz
-  sha256: 1bf302bd4ca5495bad1289d4972f3ba185b6dbc36343bc82e856798953496cf8
+  sha256: e82699b633b9ff15b7ab1bd71696efb62b6e5fece1d81ed5c83dc978177d7adf
 
 build:
   skip: True  # [win32]
   # win32 requires pypiwin32, which we don't have a build of.
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   build:
