@@ -43,6 +43,8 @@ requirements:
     - websocket-client >=0.40.0
 
 test:
+  requires:
+    - setuptools
   imports:
     - docker
     - docker.api
