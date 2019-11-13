@@ -13,7 +13,7 @@ source:
 build:
   skip: True  # [win32 or win and py<36]
   # docker-py requires pypiwin32==219 when py<36, which we don't have a build of.
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
