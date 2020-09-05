@@ -10,7 +10,7 @@ source:
 
 build:
   noarch: python  # [not win]
-  number: 2
+  number: 3
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -21,6 +21,8 @@ requirements:
     - python  # [win]
     - pip  # [win]
   run:
+    - __unix  # [osx or linux]
+    - __win  # [win]
     - python
     - requests >=2.14.2
     - six >=1.10.0
