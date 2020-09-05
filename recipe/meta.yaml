@@ -9,8 +9,7 @@ source:
   sha256: e28b9033c165e622562782691234bd1ac2da13d59bc60b389ecb9b7a3d297d43
 
 build:
-  noarch: python  # [not win]
-  number: 3
+  number: 4
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -20,12 +19,7 @@ requirements:
   host:
     - python
     - pip
-  host:  # [win]
-    - python  # [win]
-    - pip  # [win]
   run:
-    - __unix  # [osx or linux]
-    - __win  # [win]
     - python
     - requests >=2.14.2
     - six >=1.10.0
