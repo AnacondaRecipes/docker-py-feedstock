@@ -22,6 +22,7 @@ requirements:
     - pip
   host:  # [win]
     - python  # [win]
+    - pip  # [win]
   run:
     - python
     - requests >=2.14.2
