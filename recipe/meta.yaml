@@ -10,10 +10,7 @@ source:
 
 build:
   noarch: python  # [not win]
-  # Please increment by 2s and ensure windows is one greater. This allows noarch_python
-  # on all the other platforms (I hope).
-  number: 0  # [not win]
-  number: 1  # [win]
+  number: 2
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -23,6 +20,8 @@ requirements:
   host:
     - python
     - pip
+  host:  # [win]
+    - python  # [win]
   run:
     - python
     - requests >=2.14.2
@@ -55,9 +54,6 @@ test:
     - docker.transport.unixconn
     - docker.transport.npipeconn  # [win]
     - docker.transport.npipesocket  # [win]
-  commands:
-    - python -c "import docker; docker.DockerClient.from_env(version='auto')"  # [win]
-    - python -c "import pkg_resources; pkg_resources.require('docker')"  # [win]
 
 about:
   home: https://github.com/docker/docker-py/
