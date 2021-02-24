@@ -24,7 +24,7 @@ requirements:
     - six >=1.10.0
     - websocket-client >=0.32.0
     - docker-pycreds  >=0.3.0
-    - pywin32 227  # [win]
+    - pywin32 >=227  # [win]
     - appdirs >=1.4.3
     - asn1crypto >=0.22.0
     - cffi >=1.10.0
