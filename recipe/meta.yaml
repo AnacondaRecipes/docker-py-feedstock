@@ -14,7 +14,7 @@ source:
     - 0002-update-test-skips.patch
 
 build:
-  number: 2
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
