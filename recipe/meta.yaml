@@ -1,4 +1,4 @@
-{% set version = "4.4.1" %}
+{% set version = "5.0.3" %}
 
 package:
   name: docker-py
@@ -6,10 +6,15 @@ package:
 
 source:
   url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz
-  sha256: e28b9033c165e622562782691234bd1ac2da13d59bc60b389ecb9b7a3d297d43
+  sha256: 0035772df94a86e8db02aac363393755584383aacf50d37b0d55ea817149e1f4
+  patches:
+    # Adapted from https://github.com/docker/docker-py/pull/2857/commits/2e8975698eb3bc36cb037e601ee798eace9bcc53
+    # These patches can be dropped when the upstream PR is merged and released.
+    - 0001-loosen-pywin32-pin.patch
+    - 0002-update-test-skips.patch
 
 build:
-  number: 6
+  number: 2
   script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
@@ -24,12 +29,15 @@ requirements:
     - six >=1.10.0
     - websocket-client >=0.32.0
     - docker-pycreds  >=0.3.0
-    - pywin32 >=227  # [win]
+    - ssl_match_hostname >=3.5  # [py<35]
+    - ipaddress >=1.0.18  # [py<33]
+    - pywin32 >=227,<400  # [win and py>=36]
     - appdirs >=1.4.3
     - asn1crypto >=0.22.0
     - cffi >=1.10.0
     - cryptography >=1.9
     - docker-pycreds >=0.2.1
+    - enum34 >=1.1.6  # [py<34]
     - idna >=2.5
     - packaging >=16.8
     - pycparser >=2.17
@@ -59,8 +67,6 @@ about:
 
 extra:
   recipe-maintainers:
-    - pmlandwehr
     - ocefpaf
     - scopatz
     - mariusvniekerk
-    - mingwandroid

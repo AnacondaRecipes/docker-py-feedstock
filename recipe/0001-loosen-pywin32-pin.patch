@@ -1,0 +1,11 @@
+--- setup.py.orig	2021-12-04 22:06:22.000000000 -0800
++++ setup.py	2021-12-04 22:07:01.000000000 -0800
+@@ -16,7 +16,7 @@
+ 
+ extras_require = {
+     # win32 APIs if on Windows (required for npipe support)
+-    ':sys_platform == "win32"': 'pywin32==227',
++    ':sys_platform == "win32"': 'pywin32>=227,<400',
+ 
+     # If using docker-py over TLS, highly recommend this option is
+     # pip-installed or pinned.
