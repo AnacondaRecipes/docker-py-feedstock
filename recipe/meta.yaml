@@ -19,6 +19,8 @@ build:
 
 requirements:
   build:
+    - patch    >=2.6     # [not win]
+    - m2-patch >=2.6     # [win]
     - python                                 # [build_platform != target_platform]
   host:
     - python
