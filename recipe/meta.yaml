@@ -1,4 +1,4 @@
-{% set version = "4.4.1" %}
+{% set version = "7.0.0" %}
 
 package:
   name: docker-py
@@ -6,56 +6,47 @@ package:
 
 source:
   url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz
-  sha256: e28b9033c165e622562782691234bd1ac2da13d59bc60b389ecb9b7a3d297d43
+  sha256: 6a82c1630219a035c1717cf11082e97d109689c5e7f2da4aaabea4bb85a74faa
 
 build:
-  number: 5
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 0
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
   host:
     - python
     - pip
+    - setuptools
+    - wheel
   run:
     - python
-    - requests >=2.14.2
-    - six >=1.10.0
-    - websocket-client >=0.32.0
-    - docker-pycreds  >=0.3.0
-    - pywin32 >=227  # [win]
-    - appdirs >=1.4.3
-    - asn1crypto >=0.22.0
-    - cffi >=1.10.0
-    - cryptography >=1.9
-    - docker-pycreds >=0.2.1
-    - idna >=2.5
-    - packaging >=16.8
-    - pycparser >=2.17
-    - pyopenssl >=17.0.0
-    - pyparsing >=2.2.0
-    - websocket-client >=0.40.0
+    - packaging >=14.0
+    - requests >=2.26.0
+    - urllib3 >=1.26.0
+  run_constrained:
+    - pywin32 >=304 # [win]
+    - paramiko >=2.4.3
+    - websocket-client >=1.3.0
 
 test:
-  requires:
-    - setuptools
   imports:
     - docker
-    - docker.api
-    - docker.auth
-    - docker.tls
-    - docker.utils
-    - docker.utils.ports
-    - docker.transport.unixconn
-    - docker.transport.npipeconn  # [win]
-    - docker.transport.npipesocket  # [win]
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/docker/docker-py/
   license: Apache-2.0
   license_file: LICENSE
+  license_family: Apache
   summary: Python client for Docker.
+  description: |
+    A Python library for the Docker Engine API. It lets you do anything the docker command does, 
+    but from within Python apps – run containers, manage containers, manage Swarms, etc.
+  dev_url: https://github.com/docker/docker-py/
+  doc_url: https://docker-py.readthedocs.io
 
 extra:
   recipe-maintainers:
