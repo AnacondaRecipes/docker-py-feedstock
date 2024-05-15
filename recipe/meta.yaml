@@ -18,6 +18,8 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - setuptools_scm >=6.2
+    - toml
   run:
     - python
     - packaging >=14.0
