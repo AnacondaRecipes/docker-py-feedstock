@@ -10,6 +10,8 @@ source:
 
 build:
   number: 0
+  script_env:
+    - SETUPTOOLS_SCM_PRETEND_VERSION={{version}}
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
@@ -18,8 +20,7 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - setuptools_scm >=6.2
-    - toml
+    - setuptools-scm >=6.2
   run:
     - python
     - packaging >=14.0
