@@ -1,4 +1,4 @@
-{% set version = "7.0.0" %}
+{% set version = "7.1.0" %}
 
 package:
   name: docker-py
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://github.com/docker/docker-py/archive/{{ version }}.tar.gz
-  sha256: 6a82c1630219a035c1717cf11082e97d109689c5e7f2da4aaabea4bb85a74faa
+  sha256: 88d2b4271ded68be2abc7db35ceed342ef81804a58c8f4f32fa34f7fdef5f662
 
 build:
   number: 0
@@ -18,12 +18,10 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
-    - wheel
-    - setuptools-scm >=6.2
+    - hatchling
+    - hatch-vcs
   run:
     - python
-    - packaging >=14.0
     - requests >=2.26.0
     - urllib3 >=1.26.0
     - pywin32 >=304 # [win]
@@ -46,7 +44,7 @@ about:
   summary: Python client for Docker.
   description: |
     A Python library for the Docker Engine API. It lets you do anything the docker command does, 
-    but from within Python apps – run containers, manage containers, manage Swarms, etc.
+    but from within Python apps - run containers, manage containers, manage Swarms, etc.
   dev_url: https://github.com/docker/docker-py/
   doc_url: https://docker-py.readthedocs.io
 
