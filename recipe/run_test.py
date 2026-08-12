@@ -4,13 +4,12 @@ from shutil import which
 from sys import exit
 
 if which('docker'):
+    import docker
     try:
-        import docker
         docker.DockerClient.from_env(version='auto')
         print("INFO :: docker.DockerClient.from_env(version='auto') :: PASSED")
-    except:
-        print("ERROR :: docker.DockerClient.from_env(version='auto') :: FAILED")
-        exit(1)
+    except docker.errors.DockerException as e:
+        print(f"WARNING :: docker.DockerClient.from_env(version='auto') :: no Docker daemon reachable ({e}) :: SKIPPED")
     try:
         import pkg_resources
         pkg_resources.require('docker')
